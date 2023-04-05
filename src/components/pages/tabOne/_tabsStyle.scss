@@ -1,0 +1,12 @@
+// linksGroup
+.linksGroup{
+    .linksCount{
+        height: 40px;
+        width: 40px;
+        background-color: #545454;
+        color: #fff;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+    }
+}

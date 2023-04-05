@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+// sass vairables
+$primary_color: #6946C6;
+$button_hover: #523A92;
+$sucess-color: #46C66A;
+$fail-color: #FF4B55;
+$color_white: #FFFFFF;
+$color_black: #000000;
+$disbled_color: #BEBEBE;
+
+$para-fontsize: 16px;
+$heading-fontsize: 35px;
+$title-fontsize: 48px;
+$subtitle-fontsize: 24px;
+
+$para-fontsize-mob: 15px;
+$heading-fontsize-mob: 22px;
+$title-fontsize-mob: 35px;
+$subtitle-fontsize-mob: 22px;
+
+$topNavHeight: 84px;
+
+$fontThin: 100;
+$fontExtraLight: 200;
+$fontLight: 300;
+$fontRegular: 400;
+$fontMedium: 500;
+$fontSemiBold: 600;
+$fontBold: 700;
+$fontExtraBold: 800;
+$fontBlack: 900;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+    color: $primary_color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+button,
+select,
+input {
+    outline: none !important;
+    white-space: nowrap;
+}
+
+label,
+ul {
+    margin: 0;
+}
+
+.p-text {
+    font-size: $para-fontsize;
+    font-weight: 500;
+
+    strong {
+        font-weight: 600;
+    }
+
+    span {
+        color: $primary_color;
+    }
+}
+
+.h1-text {
+    font-size: $heading-fontsize;
+    line-height: 45px;
+    font-weight: 800;
+
+    span {
+        color: $primary_color;
+    }
+}
+
+.title-text {
+    font-size: $title-fontsize;
+    line-height: 55px;
+    font-weight: 800;
+
+    span {
+        color: $primary_color;
+    }
+}
+
+.subtitle-text {
+    font-size: $subtitle-fontsize;
+    line-height: 30px;
+    font-weight: 600;
+
+    span {
+        color: $primary_color;
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+@media(max-width: 600px) {
+    .p-text {
+        font-size: $para-fontsize-mob;
+    }
+
+    .h1-text {
+        font-size: $heading-fontsize-mob;
+        line-height: 25px;
+    }
+
+    .title-text {
+        font-size: $title-fontsize-mob;
+        line-height: 40px;
+    }
+
+    .subtitle-text {
+        font-size: $subtitle-fontsize-mob;
+        line-height: 25px;
+    }
+}
+
+.container {
+    max-width: 1400px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+@media(max-width: 600px) {
+    .container {
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+    }
+
+    .navBarHead {
+        .navBar {
+            padding-left: 25px !important;
+            padding-right: 25px !important;
+        }
+    }
+}
+
+
+@import "../components/layout/header";
+@import "../components/layout/sidebar/sidebar";
+@import "../components/pages/tabOne/tabsStyle";

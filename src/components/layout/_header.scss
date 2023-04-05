@@ -1,0 +1,44 @@
+.main-header {
+    position: relative;
+
+    .placeHolderPlaceOfHeader {
+        height: 60px;
+    }
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #fff;
+    color: #fff;
+    border: 0 solid #000000;
+    top: 0;
+    font-size: 13px;
+    z-index: 1011;
+    height: 60px;
+    width: 100%;
+    border-bottom: 1px solid rgba($color: #C8C8C8, $alpha: 0.7);
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.25);
+}
+
+.main-header :hover {
+    background: transparent !important;
+}
+
+.header-menu-links {
+    div {
+        color: #000;
+        font-weight: 500;
+    }
+}
+
+.hamburgerLink {
+    padding-left: 0.5rem;
+}
+
+@media (max-width: 1060px) {
+    .hamburgerLink {
+        padding-left: 1.5rem;
+    }
+}
