@@ -146,10 +146,6 @@ ul {
           box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.25);
 }
 
-.main-header :hover {
-  background: transparent !important;
-}
-
 .header-menu-links div {
   color: #000;
   font-weight: 500;
@@ -312,9 +308,17 @@ ul {
   fill: #000000;
 }
 
+.sidebar .pro-sidebar .pro-sidebar-inner .pro-sidebar-layout .pro-menu .pro-menu-item .pro-inner-item:hover {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+
 .sidebar .pro-sidebar .pro-sidebar-inner .pro-sidebar-layout .pro-menu .pro-menu-item .pro-inner-item::before {
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+.sidebar .pro-sidebar .pro-sidebar-inner .pro-sidebar-layout .pro-menu .pro-menu-item.active .pro-inner-item, .sidebar .pro-sidebar .pro-sidebar-inner .pro-sidebar-layout .pro-menu .pro-menu-item.firstLevelMenu.open .pro-inner-item {
+  background-color: rgba(0, 0, 0, 0.07);
 }
 
 .sidebar .pro-sidebar .pro-sidebar-inner .pro-sidebar-layout .pro-menu .pro-menu-item.active .pro-inner-item .pro-icon-wrapper::after, .sidebar .pro-sidebar .pro-sidebar-inner .pro-sidebar-layout .pro-menu .pro-menu-item.firstLevelMenu.open .pro-inner-item .pro-icon-wrapper::after {
