@@ -11,17 +11,21 @@ import "react-pro-sidebar/dist/css/styles.css";
 import Header from "./Header";
 import { HamburgerIcon } from "../reusableComponents/svgIcons";
 
+import $ from "jquery";
+
 interface Props {
   children: React.ReactNode;
 }
 
 const Layout = ({ children }: Props) => {
-  const [isMenuOpened, setIsMenuOpened] = useState(false);
-
+  const setIsMenuOpened = () => {
+    console.log("first")
+    $(".mainApp").toggleClass("menuActive");
+  }
   return (
     <>
-      <div className={`mainApp ${isMenuOpened ? "menuActive" : ""}`}>
-        <button className="hamburger" onClick={() => setIsMenuOpened(!isMenuOpened)}><HamburgerIcon /></button>
+      <div className="mainApp">
+        <button className="hamburger" onClick={setIsMenuOpened}><HamburgerIcon /></button>
         <aside className="sidebarAside">
           <ProSidebarMenu />
         </aside>

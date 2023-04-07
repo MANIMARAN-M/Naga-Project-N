@@ -9,10 +9,61 @@
         display: grid;
         place-items: center;
     }
+    button.link-primary{
+        background-color: transparent;
+        border: none;
+    }
 }
 
 .imageSlider{
-    width: 700px;
+    max-width: 700px;
     height: auto;
     margin: 0 auto;
 }
+
+
+.tabInnerView{
+    .TIVImage{
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        margin: 20px auto;
+    }
+    .TIVIframe{
+        iframe{
+            width: 100%;
+            height: 700px;
+        }
+    }
+}
+
+
+.tabBC{
+    .breadcrumb-item{
+        button{
+            background-color: transparent;
+            border: none;
+        }
+    }
+}
+
+// @media (max-width: 1000px){
+//     .tabBC{
+//         .breadcrumb-item{
+//             button{
+//                 background-color: red;
+//             }
+//         }
+//     }
+// }
+
+// @media (max-width: 450px){
+//     .tabBC{
+//         .breadcrumb-item{
+//             button{
+//                 background-color: blue;
+//                 color: #fff;
+//             }
+//         }
+//     }
+// }

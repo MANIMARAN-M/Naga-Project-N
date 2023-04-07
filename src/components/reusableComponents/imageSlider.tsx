@@ -4,20 +4,18 @@
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 
-export interface Props {
-    carouselData: Root2[]
+interface PropsObj {
+    name: string;
+    imageSrc: string;
+    powerBiLink: string;
 }
 
-export interface Root2 {
-    id: string
-    author: string
-    width: number
-    height: number
-    url: string
-    download_url: string
+interface Props {
+    carouselData: PropsObj[],
+    imageOpenHander: (data: PropsObj) => void
 }
 
-const ControlledCarousel = ({ carouselData }: Props) => {
+const ControlledCarousel = ({ carouselData, imageOpenHander }: Props) => {
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex: number) => {
@@ -29,16 +27,17 @@ const ControlledCarousel = ({ carouselData }: Props) => {
             <Carousel activeIndex={index} onSelect={handleSelect}>
                 {
                     carouselData.map((data, index) => (
-                        <Carousel.Item>
+                        <Carousel.Item key={index}>
                             <img
+                                onClick={() => imageOpenHander(data)}
                                 className="d-block w-100"
-                                src={data.download_url}
+                                src={data.imageSrc}
                                 alt={`First slide ${index}`}
                             />
-                            {/* <Carousel.Caption>
-                            <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        </Carousel.Caption> */}
+                            <Carousel.Caption>
+                            <h3>{data.name}</h3>
+                            {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+                        </Carousel.Caption>
                         </Carousel.Item>
                     ))
                 }

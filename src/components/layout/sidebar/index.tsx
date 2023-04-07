@@ -4,10 +4,12 @@ import {
   Menu,
   MenuItem,
   SidebarContent,
+  SidebarFooter,
 } from "react-pro-sidebar";
 
 // Import navigation link
 import { useLocation, Link } from "react-router-dom";
+import $ from "jquery";
 
 function ProSidebarMenu() {
   const location = useLocation();
@@ -37,14 +39,17 @@ function ProSidebarMenu() {
       path: "/tab-six"
     },
   ]
+
+  $(".pro-item-content a").on('click', () => {
+    $(".mainApp").removeClass("menuActive");
+  })
   return (
     <div className="sidebar">
       <ProSidebar>
         <SidebarContent>
           {SidebarConfig.map((data, index) => (
-            <Menu>
+            <Menu key={index}>
               <MenuItem
-                key={index}
                 active={location.pathname === data.path}>
                 {data.name}
                 <Link to={data.path} />
@@ -52,6 +57,13 @@ function ProSidebarMenu() {
             </Menu>
           ))}
         </SidebarContent>
+        <SidebarFooter>
+          <div className="sidebarFooterFlex justify-content-center">
+            <div className="sidebarFooterHelp">
+                <div className="sidebarFooterTitle">Company</div>
+            </div>
+          </div>
+        </SidebarFooter>
       </ProSidebar>
     </div>
   );

@@ -5,8 +5,12 @@ const Header = () => {
             <nav className="navbar navbar-default">
                 <div className="container-fluid flex-nowrap align-items-center">
                     <div className='header-menu-links hamburgerLink'>
-                        <div className='subtitle-text'>Company</div>
+                        {/* <div className="subtitle-text">Employees referral portal</div> */}
+                        <div className="subtitle-text">ER Portal</div>
                     </div>
+                    {/* <div>
+                        <div className="headerSearch"><input type="search" /></div>
+                    </div> */}
                     <div className="pe-2">
                         <div className="d-flex align-items-center">
                             <div className='p-text pl-2 text-uppercase'>

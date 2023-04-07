@@ -405,9 +405,6 @@ ul {
   display: -ms-flexbox;
   display: flex;
   padding: 20px 35px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -webkit-transform: translateX(0%);
           transform: translateX(0%);
   -webkit-transition: -webkit-transform 0.3s;
@@ -416,16 +413,8 @@ ul {
   transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
-.sidebar .pro-sidebar .pro-sidebar-inner .pro-sidebar-layout .pro-sidebar-footer .sidebarFooterFlex::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 43%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  height: 40%;
-  width: 1px;
-  background-color: #C8C8C8;
+.sidebar .pro-sidebar .pro-sidebar-inner .pro-sidebar-layout .pro-sidebar-footer .sidebarFooterFlex .sidebarFooterTitle {
+  color: #000000;
 }
 
 .sidebar .pro-sidebar .pro-sidebar-inner .pro-sidebar-layout .pro-sidebar-footer .sidebarFooterFlex .sidebarFooterHelp,
@@ -446,10 +435,6 @@ ul {
 
 .sidebar .pro-sidebar .pro-sidebar-inner .pro-sidebar-layout .pro-sidebar-footer .sidebarFooterFlex div a:hover, .sidebar .pro-sidebar .pro-sidebar-inner .pro-sidebar-layout .pro-sidebar-footer .sidebarFooterFlex div a:active {
   color: #000000;
-}
-
-.sidebar .pro-sidebar .pro-sidebar-inner .pro-sidebar-layout .pro-sidebar-footer .sidebarFooterFlex div .d-flex .sidebarFooterTitle {
-  padding-left: 10px;
 }
 
 .sidebar .pro-sidebar .pro-sidebar-inner .pro-sidebar-layout .pro-sidebar-footer .sidebarFooterFlex div .d-flex.active .sidebarFooterIcon {
@@ -486,6 +471,8 @@ ul {
   .mainApp .sidebarAside .sidebar {
     -webkit-transform: translateX(-200%);
             transform: translateX(-200%);
+    bottom: auto;
+    top: 60px;
   }
   .mainApp .mainPages {
     width: calc(100% - 0px);
@@ -511,9 +498,31 @@ ul {
   place-items: center;
 }
 
+.linksGroup button.link-primary {
+  background-color: transparent;
+  border: none;
+}
+
 .imageSlider {
-  width: 700px;
+  max-width: 700px;
   height: auto;
   margin: 0 auto;
+}
+
+.tabInnerView .TIVImage {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 20px auto;
+}
+
+.tabInnerView .TIVIframe iframe {
+  width: 100%;
+  height: 700px;
+}
+
+.tabBC .breadcrumb-item button {
+  background-color: transparent;
+  border: none;
 }
 /*# sourceMappingURL=style.css.map */
