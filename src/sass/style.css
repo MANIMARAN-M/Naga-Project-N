@@ -129,6 +129,30 @@ ul {
   height: 60px;
 }
 
+.main-header .headerSearch button svG {
+  width: 20px;
+  height: auto;
+}
+
+.main-header .mobileTopMenu {
+  display: none;
+}
+
+.main-header .mobileTopMenu button.dropdown-toggle {
+  all: unset;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.main-header .mobileTopMenu button.dropdown-toggle svg {
+  width: 20px;
+  height: auto;
+}
+
+.main-header .mobileTopMenu button.dropdown-toggle::after {
+  display: none;
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -158,6 +182,21 @@ ul {
 @media (max-width: 1060px) {
   .hamburgerLink {
     padding-left: 1.5rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .main-header .mobHideHS {
+    display: none;
+  }
+  .main-header .desktopTopButtons {
+    display: none !important;
+  }
+  .main-header .mobileTopMenu {
+    display: block;
+  }
+  .main-header .mobileTopMenu .dropdown-menu {
+    width: 220px;
   }
 }
 

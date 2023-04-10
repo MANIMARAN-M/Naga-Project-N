@@ -4,6 +4,28 @@
     .placeHolderPlaceOfHeader {
         height: 60px;
     }
+    .headerSearch{
+        button{
+            svG{
+                width: 20px;
+                height: auto;
+            }
+        }
+    }
+    .mobileTopMenu{
+        display: none;
+        button.dropdown-toggle {
+            all: unset;
+            box-shadow: none !important;
+            svg{
+                width: 20px;
+                height: auto;
+            }
+            &::after{
+                display: none;
+            }
+        }
+    }
 }
 
 .navbar {
@@ -36,5 +58,22 @@
 @media (max-width: 1060px) {
     .hamburgerLink {
         padding-left: 1.5rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .main-header{
+        .mobHideHS{
+            display: none;
+        }
+        .desktopTopButtons{
+            display: none !important;
+        }
+        .mobileTopMenu{
+            display: block;
+            .dropdown-menu{
+                width: 220px;
+            }
+        }
     }
 }
