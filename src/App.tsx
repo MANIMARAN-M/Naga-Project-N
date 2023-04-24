@@ -11,6 +11,7 @@ import TabOne from './components/pages/tabOne/tabOneIndex';
 import TabSix from './components/pages/tabSix/tabSixIndex';
 import TabThree from './components/pages/tabThree/tabThreeIndex';
 import TabTwo from './components/pages/tabTwo/tabTwoIndex';
+import DropdownAPI from './components/pages/dropdownAPI/dropdownAPI';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='/tab-four' element={<TabFour />} />
         <Route path='/tab-five' element={<TabFive />} />
         <Route path='/tab-six' element={<TabSix />} />
+        <Route path='/dropdown-api' element={<DropdownAPI />} />
       </Routes>
     </Layout>
   );

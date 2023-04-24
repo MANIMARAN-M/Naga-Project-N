@@ -38,6 +38,10 @@ function ProSidebarMenu() {
       name: "Tab Six",
       path: "/tab-six"
     },
+    {
+      name: "Dropdowns",
+      path: "/dropdown-api"
+    }
   ]
 
   $(".pro-item-content a").on('click', () => {
