@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import { Outlet } from 'react-router-dom';
 
 const DropdownAPI = () => {
   // Country states
@@ -80,6 +81,7 @@ const DropdownAPI = () => {
 
   return (
     <section>
+      <Outlet />
       <div className='d-flex align-items-end flex-wrap'>
         <div className='col-12 col-md-3'>
           <label>Countries</label> <br />
