@@ -13,6 +13,7 @@ import $ from "jquery";
 
 function ProSidebarMenu() {
   const location = useLocation();
+  const currentPath = location.pathname;
   const SidebarConfig = [
     {
       name: "Tab One",
@@ -43,6 +44,10 @@ function ProSidebarMenu() {
   $(".pro-item-content a").on('click', () => {
     $(".mainApp").removeClass("menuActive");
   })
+
+  const activeItem = SidebarConfig.find(item => currentPath === item.path || currentPath.startsWith(`${item.path}/`));
+
+
   return (
     <div className="sidebar">
       <ProSidebar>
@@ -50,7 +55,7 @@ function ProSidebarMenu() {
           {SidebarConfig.map((data, index) => (
             <Menu key={index}>
               <MenuItem
-                active={location.pathname === data.path}>
+                active={(activeItem && activeItem.path) === data.path}>
                 {data.name}
                 <Link to={data.path} />
               </MenuItem>

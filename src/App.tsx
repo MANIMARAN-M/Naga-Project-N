@@ -13,6 +13,7 @@ import TabThree from './components/pages/tabThree/tabThreeIndex';
 import TabTwo from './components/pages/tabTwo/tabTwoIndex';
 import DropdownAPI from './components/pages/dropdownAPI/dropdownAPI';
 import BreadCrumb from './components/reusableComponents/breadCrumb';
+import TabTwoView from './components/pages/tabTwo/tabTwoView';
 
 const App = () => {
   return (
@@ -21,9 +22,7 @@ const App = () => {
         <Route path='/' element={<TabOne />} />
         <Route path='/tab-two'>
           <Route index element={<TabTwo />} />
-          <Route path='list-view' element={<DropdownAPI />}>
-            <Route index element={<BreadCrumb firstName='Tab One' link='/tab-two' secondName='View List' />} />
-          </Route>
+          <Route path='list-view' element={<TabTwoView />} />
           <Route path='update-view' element={<DropdownAPI />}>
             <Route index element={<BreadCrumb firstName='Tab One' link='/tab-two' secondName='Update List' />} />
           </Route>
