@@ -4,20 +4,23 @@ import { Outlet } from 'react-router-dom';
 
 const DropdownAPI = () => {
   // Country states
+  const [projects, setProjects] = useState<string[]>([]);
+  const [selectedProject, setSelectedProject] = useState("");
+  // Country states
   const [countries, setCountries] = useState<string[]>([]);
-  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
 
   // States handlers
   const [states, setStates] = useState<string[]>([]);
-  const [selectedState, setSelectedState] = useState("");
+  const [selectedState, setSelectedState] = useState<string[]>([]);
 
   // Cities states
   const [cities, setCities] = useState<string[]>([]);
-  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedCity, setSelectedCity] = useState<string[]>([]);
 
   useEffect(() => {
     // Instead of direct set values in the countries list, we have to get values from API and store list of countries
-    setCountries(["India", "United State", "Oman", "United Kingdom", "Australia", "Yemen"])
+    setProjects(["Project 1", "Project 2", "Project 3", "Project 4"]);
 
     // sample API : https://jsonplaceholder.typicode.com/todos/1
     // To more abount axios: https://axios-http.com/docs/intro
@@ -31,13 +34,12 @@ const DropdownAPI = () => {
     //   });
   }, []);
 
-  // get county value based on the user selection
-  const countryChangeHandler = (value: string) => {
-    // console.log(value)
-    setSelectedCountry(value);
+  // get project value based on the user selection
+  const projectChangeHandler = (value: string) => {
+    setSelectedProject(value);
 
     // Instead of direct set values in the states list, we have to get values from API
-    setStates(["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa"])
+    setCountries(["India", "United State", "Oman", "United Kingdom", "Australia", "Yemen"])
 
     // sample API : https://jsonplaceholder.typicode.com/todos/1
     // To more abount axios: https://axios-http.com/docs/intro
@@ -52,86 +54,187 @@ const DropdownAPI = () => {
     //   });
   }
 
-  // get state value based on the user selection
-  const stateChangeHandler = (value: string) => {
-    // console.log(value)
-    setSelectedState(value);
-
-    // Instead of direct set values in the cities list, we have to get values from API
-    setCities(["Visakhapatnam", "Anantapur", "Rajamahendravaram", "Nellore", "Vizianagaram"])
-
-    // sample API : https://jsonplaceholder.typicode.com/todos/1
-    // To more abount axios: https://axios-http.com/docs/intro
-    // const URL = "YOUR_API" + ParamValues (value)
-    // axios.get(URL)
-    //   .then(function (response) {
-    //     console.log(JSON.stringify(response.data));
-    //     // setCities(response.data);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-  }
-
   // get city value based on the user selection
-  const cityChangeHandler = (value: string) => {
-    // console.log(value)
-    setSelectedCity(value);    
+  const cityChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const item = event.target.value;
+    if (selectedCity.includes(item)) {
+      setSelectedCity(selectedCity.filter((i) => i !== item));
+    } else {
+      setSelectedCity([...selectedCity, item]);
+    }
   }
+
+  // get state value based on the user selection
+  const stateChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const item = event.target.value;
+    if (selectedState.includes(item)) {
+      setSelectedState(selectedState.filter((i) => i !== item));
+    } else {
+      setSelectedState([...selectedState, item]);
+    }
+    setCities(["Visakhapatnam", "Anantapur", "Rajamahendravaram", "Nellore", "Vizianagaram"])
+  }
+
+  const handleSelectCountries = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const item = event.target.value;
+    if (selectedCountries.includes(item)) {
+      setSelectedCountries(selectedCountries.filter((i) => i !== item));
+    } else {
+      setSelectedCountries([...selectedCountries, item]);
+    }
+    setStates(["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa"])
+  };
+
+  const handleSelectAll = (param: string) => {
+    if (param === "Countries") {
+      setSelectedCountries(countries)
+    } else if (param === "States") {
+      setSelectedState(states)
+    } else if (param === "Cities") {
+      setSelectedCity(cities)
+    }
+    //  ?  :  ?  :  ?  : null;
+  };
+
+  const handleUnselectAll = (param: string) => {
+    if (param === "Countries") {
+      setSelectedCountries([])
+    } else if (param === "States") {
+      setSelectedState([])
+    } else if (param === "Cities") {
+      setSelectedCity([])
+    }
+    // param === "Countries" ? setSelectedCountries([]) : 
+    //   param === "States" ? setSelectedState([]) : param === "Cities" ? setSelectedCity([]) : null
+  };
 
   return (
     <section>
       <Outlet />
       <div className='d-flex align-items-end flex-wrap'>
         <div className='col-12 col-md-3'>
-          <label>Countries</label> <br />
-          <select className="form-select" onChange={e => countryChangeHandler(e.target.value)}>
-            <option hidden>Select County</option>
+          <label>Projects</label> <br />
+          <select className="form-select" value={selectedProject} onChange={e => projectChangeHandler(e.target.value)}>
+            <option hidden>Select Project</option>
             {
-              countries.map((data, index) => (
+              projects.map((data, index) => (
                 <option value={data} key={index}>{data}</option>
               ))
             }
           </select>
-        </div>
-        <div className='col-12 col-md-3 px-0 px-md-3 mt-3 mt-md-0'>
-          <label>States</label> <br />
-          <select className="form-select" onChange={e => stateChangeHandler(e.target.value)}>
-            <option hidden>Select State</option>
-            {
-              states.map((data, index) => (
-                <option value={data} key={index}>{data}</option>
-              ))
-            }
-          </select>
-        </div>
-        <div className='col-12 col-md-3 mt-3 mt-md-0'>
-          <label>Cities</label> <br />
-          <select className="form-select" onChange={e => cityChangeHandler(e.target.value)}>
-            <option hidden>Select City</option>
-            {
-              cities.map((data, index) => (
-                <option value={data} key={index}>{data}</option>
-              ))
-            }
-          </select>
-        </div>
-        <div className='col-12 col-md-3 ps-0 ps-md-4 mt-3 mt-md-0'>
-          <button type="button" className="btn btn-primary">Submit</button>
         </div>
       </div>
       <div className='mt-3'>
+        <p>Countries</p>
+        {countries.length > 0 ? (
+          <div className="d-flex flex-wrap">
+            {['All Select', 'All Unselect', ...countries].map((item, index) => (
+              <div key={item} className='px-3'>
+                <input
+                  type="checkbox"
+                  id={item.split(" ").join("") + index.toString()}
+                  name={item}
+                  value={item}
+                  checked={
+                    item === 'All Select'
+                      ? selectedCountries.length === countries.length
+                      : item === 'All Unselect'
+                        ? selectedCountries.length === 0
+                        : selectedCountries.includes(item)
+                  }
+                  onChange={
+                    item === 'All Select'
+                      ? () => handleSelectAll("Countries")
+                      : item === 'All Unselect'
+                        ? () => handleUnselectAll("Countries")
+                        : handleSelectCountries
+                  }
+                />
+                <label className='ps-2' htmlFor={item.split(" ").join("") + index.toString()}>{item}</label>
+              </div>
+            ))}
+          </div>
+        ) : "No value"}
+      </div>
+      <div className='mt-3'>
+        <p>States</p>
+        {states.length > 0 ? (
+          <div className="d-flex flex-wrap">
+            {['All Select', 'All Unselect', ...states].map((item, index) => (
+              <div key={item} className='px-3'>
+                <input
+                  type="checkbox"
+                  id={item.split(" ").join("") + index.toString()}
+                  name={item}
+                  value={item}
+                  checked={
+                    item === 'All Select'
+                      ? selectedState.length === countries.length
+                      : item === 'All Unselect'
+                        ? selectedState.length === 0
+                        : selectedState.includes(item)
+                  }
+                  onChange={
+                    item === 'All Select'
+                      ? () => handleSelectAll("States")
+                      : item === 'All Unselect'
+                        ? () => handleUnselectAll("States") 
+                        : stateChangeHandler
+                  }
+                />
+                <label className='ps-2' htmlFor={item.split(" ").join("") + index.toString()}>{item}</label>
+              </div>
+            ))}
+          </div>
+        ) : "No value"}
+      </div>
+      <div className='mt-3'>
+        <p>Cities</p>
+        {cities.length > 0 ? (
+          <div className="d-flex flex-wrap">
+            {['All Select', 'All Unselect', ...cities].map((item, index) => (
+              <div key={item} className='px-3'>
+                <input
+                  type="checkbox"
+                  id={item.split(" ").join("") + index.toString()}
+                  name={item}
+                  value={item}
+                  checked={
+                    item === 'All Select'
+                      ? selectedCity.length === countries.length
+                      : item === 'All Unselect'
+                        ? selectedCity.length === 0
+                        : selectedCity.includes(item)
+                  }
+                  onChange={
+                    item === 'All Select'
+                      ? () => handleSelectAll("Cities")
+                      : item === 'All Unselect'
+                        ? () => handleUnselectAll("Cities")
+                        : cityChangeHandler
+                  }
+                />
+                <label className='ps-2' htmlFor={item.split(" ").join("") + index.toString()}>{item}</label>
+              </div>
+            ))}
+          </div>
+        ) : "No value"}
+      </div>
+      <div className=' mt-3'>
+          <button type="button" className="btn btn-primary">Submit</button>
+        </div>
+      <div className='mt-3'>
         <dl>
           <dt>County:</dt>
-          <dd>{selectedCountry}</dd>
+          <dd>{selectedCountries.join(", ")}</dd>
         </dl>
         <dl>
           <dt>State:</dt>
-          <dd>{selectedState}</dd>
+          <dd>{selectedState.join(", ")}</dd>
         </dl>
         <dl>
           <dt>City:</dt>
-          <dd>{selectedCity}</dd>
+          <dd>{selectedCity.join(", ")}</dd>
         </dl>
       </div>
     </section>
