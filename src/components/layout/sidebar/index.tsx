@@ -38,7 +38,11 @@ function ProSidebarMenu() {
     {
       name: "Tab Six",
       path: "/tab-six"
-    }
+    },
+    {
+      name: "PowerBI Report",
+      path: "/poweBI-reports"
+    },
   ]
 
   $(".pro-item-content a").on('click', () => {
