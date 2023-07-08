@@ -16,9 +16,15 @@
 }
 
 .imageSlider{
-    max-width: 700px;
-    height: auto;
+    max-width: 100%;
+    height: calc(100vh - 300px);
     margin: 0 auto;
+    img{
+        object-fit: cover;
+    }
+    .carousel-inner{
+        height: 100%;
+    }
 }
 
 

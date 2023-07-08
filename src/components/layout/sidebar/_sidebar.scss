@@ -11,7 +11,7 @@
             left: 0;
             bottom: 0px;
             width: 280px;
-            height: calc(100vh - 60px);
+            height: calc(100vh - 94px);
             color: #fff;
             transition: width, left, right, 0.3s;
             z-index: 1009;
@@ -20,9 +20,9 @@
 
     .mainPages {
         position: relative;
-        width: calc(100% - 280px);
-        transition: width, left, right, 0.3s;
-        float: right;
+        // width: calc(100% - 280px);
+        // transition: width, left, right, 0.3s;
+        // float: right;
     }
 
     &.collapsed {
@@ -41,7 +41,7 @@
         }
 
         .mainPages {
-            width: calc(100% - 80px);
+            // width: calc(100% - 80px);
         }
     }
 }
@@ -379,7 +379,7 @@
         }
 
         .mainPages {
-            width: calc(100% - 0px);
+            // width: calc(100% - 0px);
         }
 
         &.collapsed {

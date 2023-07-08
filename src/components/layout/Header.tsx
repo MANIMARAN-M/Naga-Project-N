@@ -3,16 +3,69 @@ import { MenuIcon, SearchIcon } from '../reusableComponents/svgIcons';
 import { InputGroup } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
+  const SidebarConfig = [
+    {
+      name: "Tab One",
+      path: "/"
+    },
+    {
+      name: "Tab Two",
+      path: "/tab-two"
+    },
+    {
+      name: "Tab Three",
+      path: "/tab-three"
+    },
+    {
+      name: "Tab Four",
+      path: "/tab-four"
+    },
+    {
+      name: "Tab Five",
+      path: "/tab-five"
+    },
+    {
+      name: "Tab Six",
+      path: "/tab-six"
+    },
+    {
+      name: "PowerBI Report",
+      path: "/poweBI-reports"
+    },
+  ]
   return (
     <div className="main-header">
       <div className='placeHolderPlaceOfHeader'></div>
-      <nav className="navbar navbar-default">
-        <div className="container-fluid flex-nowrap align-items-center">
-          <div className='header-menu-links hamburgerLink'>
-            {/* <div className="subtitle-text">Employees referral portal</div> */}
-            <div className="subtitle-text">ER Portal</div>
+
+      <nav className="navbar w-100 d-flex flex-wrap align-items-center justify-content-between navbar-expand-lg navbar-light bg-white">
+        <div className="container-fluid d-flex justify-content-between">
+          <a className="navbar-brand subtitle-text" href="#">ER Portal</a>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+            <ul className="navbar-nav">
+              {SidebarConfig.map((data, index) => (
+                <li className="nav-item" key={index}>
+                  <NavLink to={data.path} className={({isActive, isPending}) => isActive ? "nav-link active" : "nav-link" } aria-current="page">{data.name}</NavLink>
+                </li>
+              ))
+              }
+              {/* It is for nested dropdowns */}
+              {/* <li className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown link
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a className="dropdown-item" href="#">Action</a></li>
+                  <li><a className="dropdown-item" href="#">Another action</a></li>
+                  <li><a className="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li> */}
+            </ul>
           </div>
           <div className="pe-2">
             <div className='d-flex alin-items-center'>
@@ -73,6 +126,8 @@ const Header = () => {
           </div>
         </div>
       </nav>
+
+
     </div>
   )
 }

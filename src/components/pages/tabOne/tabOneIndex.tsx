@@ -112,13 +112,14 @@ const TabOne = () => {
       <div className='tabBC'>
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
-            <li className="breadcrumb-item"><button onClick={handleBack}>Tab One</button></li>
+            <li className="breadcrumb-item px-3"><button onClick={handleBack}>Tab One</button></li>
             {currentImage.name && <li className="breadcrumb-item active" aria-current="page">{currentImage.name}</li>}
           </ol>
         </nav>
       </div>
       {!isImageScreeActive ? <>
-        <div className='d-flex flex-wrap'>
+        <ControlledCarousel carouselData={carouselData} imageOpenHander={imageOpenHander} />
+        <div className='d-flex flex-wrap mt-5'>
           {linksData.map((data, index) => (
             <div key={index}>
               <div className='linksGroup d-flex align-items-center mb-4' style={{ minWidth: "200px" }}>
@@ -132,7 +133,6 @@ const TabOne = () => {
             </div>
           ))}
         </div>
-        <ControlledCarousel carouselData={carouselData} imageOpenHander={imageOpenHander} />
       </> :
         <div className='tabInnerView'>
           <div className='TIVImage'>

@@ -24,13 +24,13 @@ const ControlledCarousel = ({ carouselData, imageOpenHander }: Props) => {
 
     return (
         <div className='imageSlider'>
-            <Carousel activeIndex={index} onSelect={handleSelect}>
+            <Carousel activeIndex={index} className='h-100' onSelect={handleSelect}>
                 {
                     carouselData.map((data, index) => (
-                        <Carousel.Item key={index}>
+                        <Carousel.Item key={index} className='h-100'>
                             <img
                                 onClick={() => imageOpenHander(data)}
-                                className="d-block w-100"
+                                className="d-block w-100 img-fluid h-100"
                                 src={data.imageSrc}
                                 alt={`First slide ${index}`}
                             />

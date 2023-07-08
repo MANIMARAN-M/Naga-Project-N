@@ -25,10 +25,10 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <div className="mainApp">
-        <button className="hamburger" onClick={setIsMenuOpened}><HamburgerIcon /></button>
-        <aside className="sidebarAside">
+        {/* <button className="hamburger" onClick={setIsMenuOpened}><HamburgerIcon /></button> */}
+        {/* <aside className="sidebarAside">
           <ProSidebarMenu />
-        </aside>
+        </aside> */}
         <div className="mainPages">
           <Header />
           <div className="p-3">{children}</div>
