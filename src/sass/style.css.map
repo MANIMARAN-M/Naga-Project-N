@@ -5,7 +5,8 @@
         "style.scss",
         "../components/layout/_header.scss",
         "../components/layout/sidebar/_sidebar.scss",
-        "../components/pages/tabOne/_tabsStyle.scss"
+        "../components/pages/tabOne/_tabsStyle.scss",
+        "../components/pages/tabThree/_projectActions.scss"
     ],
     "names": [],
     "file": "style.css"

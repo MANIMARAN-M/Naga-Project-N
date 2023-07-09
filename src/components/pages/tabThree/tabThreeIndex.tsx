@@ -1,67 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
+// import { Tab, Tabs } from 'react-bootstrap'
+import { Button, Form, Input, Select, Tabs, Typography } from 'antd';
+import type { TabsProps } from 'antd';
+import Project from './project';
+
+const { Text, Title } = Typography;
 
 const TabThree = () => {
-  const linksData = [
+  const onChange = (key: string) => {
+    console.log(key);
+  };
+
+  const items: TabsProps['items'] = [
     {
-      name: "Primary link one",
-      link: "https://google.com/"
+      key: '1',
+      label: `Project`,
+      children: <Project />,
     },
     {
-      name: "Primary link two",
-      link: "https://google.com/"
+      key: '2',
+      label: `Problem`,
+      children: `Content of Tab Pane 2`,
     },
     {
-      name: "Primary link three",
-      link: "https://google.com/"
+      key: '3',
+      label: `Tab 3`,
+      children: `Content of Tab Pane 3`,
     },
-    {
-      name: "Primary link four",
-      link: "https://google.com/"
-    },
-    {
-      name: "Primary link five",
-      link: "https://google.com/"
-    },
-    {
-      name: "Primary link six",
-      link: "https://google.com/"
-    },
-    {
-      name: "Primary link seven",
-      link: "https://google.com/"
-    },
-    {
-      name: "Primary link eight",
-      link: "https://google.com/"
-    },
-    {
-      name: "Primary link nine",
-      link: "https://google.com/"
-    },
-    {
-      name: "Primary link ten",
-      link: "https://google.com/"
-    },
-    {
-      name: "Primary link eleven",
-      link: "https://google.com/"
-    }
-  ]
+  ];
   return (
-    <section>
-      <div>
-        <h1 className='subtitle-text mb-3'>Tab Three</h1>
+    <section className='projectActions'>
+      <div className='mb-2'>
+        <Title level={3}><strong>Tab Three</strong></Title>
       </div>
-      {linksData.map((data, index) => (
-        <div key={index} className='linksGroup d-flex align-items-center mb-4'>
+      {/* <Tabs
+        defaultActiveKey="Project"
+        className="my-3"
+      >
+        <Tab eventKey="Project" title="Project">
           <div>
-            <div className='linksCount'><span>{index + 1}</span></div>
+            <select className="form-select" value={selectedProject} onChange={e => projectChangeHandler(e.target.value)}>
+              <option hidden>Select Project</option>
+              {
+                ["Add", "Edit", "Delete"].map((data, index) => (
+                  <option value={data} key={index}>{data}</option>
+                ))
+              }
+            </select>
           </div>
+        </Tab>
+        <Tab eventKey="About" title="About">
           <div>
-            <div className='ms-3'><a href={data.link} target='_blank' rel="noreferrer" className="link-primary">{data.name}</a></div>
+            <h4>About</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nisi culpa debitis at hic harum nobis molestiae ad impedit non quia in exercitationem nostrum, voluptate eaque quod veniam dolorum enim?</p>
           </div>
-        </div>
-      ))}
+        </Tab>
+      </Tabs> */}
+      <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
     </section>
   )
 }
