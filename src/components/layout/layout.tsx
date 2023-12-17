@@ -12,16 +12,27 @@ import Header from "./Header";
 import { HamburgerIcon } from "../reusableComponents/svgIcons";
 
 import $ from "jquery";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/reducers";
 
 interface Props {
   children: React.ReactNode;
 }
 
 const Layout = ({ children }: Props) => {
-  const setIsMenuOpened = () => {
-    console.log("first")
-    $(".mainApp").toggleClass("menuActive");
-  }
+  const history = useNavigate();
+  const location = useLocation();
+  const userDetails = useSelector(
+    (state: RootState) => state.loginData
+  );
+
+  React.useEffect(() => {
+    if(userDetails){
+      !userDetails.isLoggedIN ? history("/login") : location.pathname === "/login" && history("/")
+    }
+  }, [userDetails]);
+
   return (
     <>
       <div className="mainApp">
@@ -29,8 +40,8 @@ const Layout = ({ children }: Props) => {
         {/* <aside className="sidebarAside">
           <ProSidebarMenu />
         </aside> */}
-        <div className="mainPages">
-          <Header />
+          <div className="mainPages">
+          {userDetails.isLoggedIN && <Header />}
           <div className="p-3">{children}</div>
         </div>
       </div>

@@ -4,8 +4,19 @@ import { InputGroup } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link, NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/reducers';
+import { logOutAction } from '../../redux/actions/loginActions/loginActions';
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const userDetails = useSelector(
+    (state: RootState) => state.loginData
+  );
+  const logoutHandler = async () => {
+    await dispatch(logOutAction());
+    // history.push("/logout");
+  }
   const SidebarConfig = [
     {
       name: "Tab One",
@@ -50,7 +61,7 @@ const Header = () => {
             <ul className="navbar-nav">
               {SidebarConfig.map((data, index) => (
                 <li className="nav-item" key={index}>
-                  <NavLink to={data.path} className={({isActive, isPending}) => isActive ? "nav-link active" : "nav-link" } aria-current="page">{data.name}</NavLink>
+                  <NavLink to={data.path} className={({ isActive, isPending }) => isActive ? "nav-link active" : "nav-link"} aria-current="page">{data.name}</NavLink>
                 </li>
               ))
               }
@@ -115,10 +126,10 @@ const Header = () => {
               <div>
                 <div className="d-flex align-items-center ms-4 desktopTopButtons">
                   <div className='p-text pl-2 text-uppercase'>
-                    <button type="button" className="btn btn-secondary">Sign In</button>
+                    <button type="button" className="btn btn-secondary">{userDetails.userName}</button>
                   </div>
                   <div className='p-text pl-2 text-uppercase ms-4'>
-                    <button type="button" className="btn btn-primary">Sign Up</button>
+                    <button type="button" className="btn btn-primary" onClick={logoutHandler}>Sign out</button>
                   </div>
                 </div>
               </div>

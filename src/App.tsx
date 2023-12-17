@@ -15,6 +15,7 @@ import DropdownAPI from './components/pages/dropdownAPI/dropdownAPI';
 import BreadCrumb from './components/reusableComponents/breadCrumb';
 import TabTwoView from './components/pages/tabTwo/tabTwoView';
 import PowerBIReports from './components/pages/PowerBIdashboard/PowerBIdashboard';
+import Login from './components/pages/login';
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
         <Route path='/tab-five' element={<TabFive />} />
         <Route path='/tab-six' element={<TabSix />} />
         <Route path='/poweBI-reports' element={<PowerBIReports />} />
+        <Route path='*' element={<Login />} />
       </Routes>
     </Layout>
   );
